@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-public class Date implements Comparable<T>
+public class Date implements Comparable<Date>
 {
     private String month;
     private int day;
@@ -220,9 +220,9 @@ public class Date implements Comparable<T>
      * @return int 1 if Date is greater than another Date
      * @return int 0 if Dates are equal
      */
-    public int compareTo(T o) {
+    public int compareTo(Date o) {
         if (this.day < o.day) {
-            if (this.month < o.month) {
+            if (this.getMonth() < o.getMonth()) {
                 if (this.year < o.year) {
                     return -1;
                 }
@@ -236,7 +236,7 @@ public class Date implements Comparable<T>
             }
         }
         if (this.day > o.day) {
-            if (this.month > o.month) {
+            if (this.getMonth() > o.getMonth()) {
                 if (this.year > o.year) {
                     return 1;
                 }
@@ -250,7 +250,7 @@ public class Date implements Comparable<T>
             }
         }
         if (this.day == o.day) {
-            if (this.month == o.month) {
+            if (this.getMonth() == o.getMonth()) {
                 if (this.year == o.year) {
                     return 0;
                 }
@@ -259,7 +259,7 @@ public class Date implements Comparable<T>
                 }
                 return 1;
             }
-            if (this.month < o.month) {
+            if (this.getMonth() < o.getMonth()) {
                 if (this.year < o.year) {
                     return -1;
                 }

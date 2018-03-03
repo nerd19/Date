@@ -215,63 +215,38 @@ public class Date implements Comparable<Date>
         return monthString(getMonth()) + ", " + getDay() + " " + getYear();
     }
     /**
-     * @param T o is a generic object
+     * @param Date o is a generic object
      * @return int -1 if Date is less than another Date
      * @return int 1 if Date is greater than another Date
      * @return int 0 if Dates are equal
+     * Throw illegal argument exception if the Object passed is not a Date
      */
     public int compareTo(Date o) {
-        if (this.day < o.day) {
+        if (this.year < o.year) {
+            return -1;
+        }
+        if (this.year == o.year) {
             if (this.getMonth() < o.getMonth()) {
-                if (this.year < o.year) {
                     return -1;
-                }
-                return 1;
             }
-            else {
-                if (this.year < o.year) {
-                    return -1;
-                }
-                return 1;
-            }
-        }
-        if (this.day > o.day) {
-            if (this.getMonth() > o.getMonth()) {
-                if (this.year > o.year) {
-                    return 1;
-                }
-                return -1;
-            }
-            else {
-                if (this.year > o.year) {
-                    return 1;
-                }
-                return -1;
-            }
-        }
-        if (this.day == o.day) {
             if (this.getMonth() == o.getMonth()) {
-                if (this.year == o.year) {
+                if (this.day < o.day) {
+                    return -1;
+                }
+                if (this.day == o.day) {
                     return 0;
                 }
-                if (this.year < o.year) {
-                    return -1;
-                }
-                return 1;
-            }
-            if (this.getMonth() < o.getMonth()) {
-                if (this.year < o.year) {
-                    return -1;
-                }
-                return 1;
-            }
-            else {
-                if (this.year > o.year) {
+                if (this.day > o.day) {
                     return 1;
                 }
-                return -1;
             }
-
+            if (this.getMonth() > o.getMonth()) {
+                    return 1;
+            }
         }
+        if (this.year > o.year) {
+            return 1;
+        }
+        throw new IllegalArgumentException("Not applicable.");
     }
 }
